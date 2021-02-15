@@ -30,6 +30,9 @@ function handleFinDel(event){
 function handleFinBack(event){
     const li = event.target.parentNode;
     //move to pen and del
+    const text = li.querySelector("span").innerText;
+    paintPending(text);
+    handleFinDel(event);
 }
 
 function handlePendingDel(event){
@@ -45,6 +48,9 @@ function handlePendingDel(event){
 function handlePendingFin(event){
     const li = event.target.parentNode;
     // move to fin and del
+    const text = li.querySelector("span").innerText;
+    paintFinished(text);
+    handlePendingDel(event);
 }
 
 function paintFinished(text){
@@ -52,7 +58,7 @@ function paintFinished(text){
     const delBtn = document.createElement("button");
     const backBtn = document.createElement("button");
     const span = document.createElement("span");
-    const newId = PENDINGS.length + 1;
+    const newId = FINISHEDS.length + 1;
     span.innerText = text;
     delBtn.innerText = "❌";
     backBtn.innerText = "⏪";

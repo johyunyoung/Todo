@@ -8,6 +8,7 @@ const FINISHED_LS = "finish";
 
 let PENDINGS = [];
 let FINISHEDS = [];
+let idNum = 0;
 
 function savePendings(){
     localStorage.setItem(PENDING_LS, JSON.stringify(PENDINGS));
@@ -58,7 +59,8 @@ function paintFinished(text){
     const delBtn = document.createElement("button");
     const backBtn = document.createElement("button");
     const span = document.createElement("span");
-    const newId = FINISHEDS.length + 1;
+    const newId = idNum;     // bug
+    idNum += 1;
     span.innerText = text;
     delBtn.innerText = "❌";
     backBtn.innerText = "⏪";
@@ -82,7 +84,8 @@ function paintPending(text){
     const delBtn = document.createElement("button");
     const finBtn = document.createElement("button");
     const span = document.createElement("span");
-    const newId = PENDINGS.length + 1;
+    const newId = idNum;      // bug
+    idNum += 1;
     span.innerText = text;
     delBtn.innerText = "❌";
     finBtn.innerText = "✔";
